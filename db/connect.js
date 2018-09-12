@@ -3,7 +3,7 @@ import logger from '../core/logger/app-logger'
 import config from '../core/config/config.dev'
 
 Mongoose.Promise = global.Promise;
-
+ 
 const connectToDb = async () => {
     let dbHost = config.dbHost;
     let dbPort = config.dbPort;

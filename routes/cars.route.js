@@ -1,5 +1,5 @@
 import express from "express";
-import carController from "../controllers/cars.controller"
+import carController from "../controllers/users.controller"
 const router = express.Router()
 
 router.get('/allcars', (req, res) => {

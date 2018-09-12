@@ -8,7 +8,7 @@ const dir = config.logFileDir;
 if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
 }
-
+ 
 
 let logger = new winston.Logger({
     level: 'info',

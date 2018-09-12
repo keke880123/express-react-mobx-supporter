@@ -14,7 +14,7 @@ controller.getAll = async (req, res) => {
         res.send('Got error in getAll');
     }
 }
-
+ 
 controller.addCar = async (req, res) => {
     let carToAdd = Car({
         name: req.body.name
