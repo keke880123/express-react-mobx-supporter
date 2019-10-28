@@ -1,5 +1,5 @@
-import Car from '../models/cars.model'
-import logger from '../core/logger/app-logger'
+import Car from '../models/cars.model';
+import logger from '../core/logger/app-logger';
 
 const controller = {};
 
@@ -8,14 +8,14 @@ controller.getAll = async (req, res) => {
         const cars = await Car.getAll();
         logger.info('sending all cars...');
         res.send(cars);
-    }
-    catch(err) {
+    } catch (err) {
         logger.error('Error in getting cars- ' + err);
         res.send('Got error in getAll');
     }
-}
- 
+};
+
 controller.addCar = async (req, res) => {
+    //   console.log('addCar start');
     let carToAdd = Car({
         name: req.body.name
     });
@@ -23,24 +23,22 @@ controller.addCar = async (req, res) => {
         const savedCar = await Car.addCar(carToAdd);
         logger.info('Adding car...');
         res.send('added: ' + savedCar);
-    }
-    catch(err) {
+    } catch (err) {
         logger.error('Error in getting cars- ' + err);
         res.send('Got error in getAll');
     }
-}
+};
 
 controller.deleteCar = async (req, res) => {
     let carName = req.body.name;
-    try{
+    try {
         const removedCar = await Car.removeCar(carName);
         logger.info('Deleted Car- ' + removedCar);
         res.send('Car successfully deleted');
-    }
-    catch(err) {
+    } catch (err) {
         logger.error('Failed to delete car- ' + err);
         res.send('Delete failed..!');
     }
-}
+};
 
 export default controller;

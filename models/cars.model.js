@@ -1,21 +1,25 @@
 import mongoose from 'mongoose';
 
-const CarSchema = mongoose.Schema({
-    name: {type: String, required: true, unique: true, index: true}
-}, {collection : 'Car'});
+const CarSchema = mongoose.Schema(
+    {
+        name: { type: String, required: true, unique: true, index: true }
+    },
+    { collection: 'Car' }
+);
 
 let CarsModel = mongoose.model('Car', CarSchema);
 
 CarsModel.getAll = () => {
     return CarsModel.find({});
-}
+};
 
-CarsModel.addCar = (carToAdd) => {
-    return carToAdd.save();
-}
+CarsModel.addCar = carToAdd => {
+    // return carToAdd.save();
+    return CarsModel({ name: '산타페' }).save();
+};
 
-CarsModel.removeCar = (carName) => {
-    return CarsModel.remove({name: carName});
-}
- 
+CarsModel.removeCar = carName => {
+    return CarsModel.remove({ name: carName });
+};
+
 export default CarsModel;
