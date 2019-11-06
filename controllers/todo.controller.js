@@ -7,7 +7,7 @@ controller.addTodo = async (req, res) => {
     const todoObject = {
         idx: req.query.idx || 1,
         content: req.query.content || '',
-        isSovled: req.query.isSovled || false
+        isSovled: req.query.isSovled || 0
     };
     try {
         const addTodo = await Todo.addTodo(todoObject);
@@ -22,16 +22,16 @@ controller.getList = async (req, res) => {
         const todoList = await Todo.getList();
         res.send({ msg: 'success', data: todoList });
     } catch (err) {
-        res.send({ msg: 'fail', data: {} });
+        res.send({ msg: 'fail', data: err });
     }
 };
 
 // const id = '5dbff2ce3171e39f4841b80b';
 controller.toggleSolve = async (req, res) => {
-    const id = req.query.id;
-    const bool = req.query.bool;
+    // const id = req.query.id;
+    const id = req.params.id;
     try {
-        const todo = await Todo.toggleSolve(id, bool);
+        const todo = await Todo.toggleSolve(id);
         res.send({ msg: 'success', data: todo });
     } catch (err) {
         res.send({ msg: 'fail', data: {} });
@@ -39,7 +39,7 @@ controller.toggleSolve = async (req, res) => {
 };
 
 controller.removeTodo = async (req, res) => {
-    const id = req.query.id;
+    const id = req.params.id;
     try {
         const todo = await Todo.removeTodo(id);
         res.send({ msg: 'success', data: todo });

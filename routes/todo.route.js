@@ -13,8 +13,12 @@ router.get('/list', (req, res) => {
     todoController.getList(req, res);
 });
 
-router.get('/update', (req, res) => {
+router.get('/update/:id', (req, res) => {
     todoController.toggleSolve(req, res);
+});
+
+router.get('/remove/:id', (req, res) => {
+    todoController.removeTodo(req, res);
 });
 
 export default router;

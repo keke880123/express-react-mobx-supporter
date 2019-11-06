@@ -15,7 +15,7 @@ const TodoSchema = new Schema({
     idx: { type: Number, required: true },
     type: { type: String, required: true, default: 'text' },
     content: { type: String, required: true, default: '' },
-    isSolved: { type: Boolean, required: true, default: false },
+    isSolved: { type: Number, required: true, default: 0 },
     test: { type: Number, default: 0 }
 });
 
@@ -37,12 +37,10 @@ TodoModel.getList = () => {
     return TodoModel.find({});
 };
 
-TodoModel.toggleSolve = (id, bool) => {
-    console.log('id', id);
-    console.log('bool', bool);
-    return TodoModel.update({ _id: id }, { $bit: { test: { xor: 1 } } });
+TodoModel.toggleSolve = id => {
+    // console.log('id', id);
+    return TodoModel.findOneAndUpdate({ _id: id }, { $bit: { isSolved: { xor: 1 } } }, { new: true, passRawResult: true });
     // return TodoModel.update({ _id: id }, { isSolved: true });
-    // return TodoModel.findOneAndUpdate
 };
 
 TodoModel.removeTodo = id => {
