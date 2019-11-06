@@ -39,7 +39,8 @@ TodoModel.getList = () => {
 
 TodoModel.toggleSolve = id => {
     // console.log('id', id);
-    return TodoModel.findOneAndUpdate({ _id: id }, { $bit: { isSolved: { xor: 1 } } }, { new: true, passRawResult: true });
+    // return TodoModel.findOneAndUpdate({ _id: id }, { $bit: { isSolved: { xor: 1 } } }, { new: true, passRawResult: true });
+    return TodoModel.findOneAndUpdate({ _id: id }, { $bit: { isSolved: { xor: 1 } } }, { new: true });
     // return TodoModel.update({ _id: id }, { isSolved: true });
 };
 
