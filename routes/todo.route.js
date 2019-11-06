@@ -4,6 +4,7 @@ import todoController from '../controllers/todo.controller';
 const router = express.Router();
 
 router.get('/addTodo', (req, res) => {
+    // http://localhost:5000/todo/addTodo
     console.log('req', req.query);
     todoController.addTodo(req, res);
 });

@@ -11,6 +11,6 @@ config.dbName = process.env.dbName || 'test_db';
 config.dbId = process.env.dbId || 'test';
 config.dbPwd = process.env.dbPwd || 'test';
 // 혹시 몰라서 백업 / id : inbm32 / pwd : 1
-config.serverPort = process.env.serverPort || 3000;
+config.serverPort = process.env.serverPort || 5000;
 
 export default config;

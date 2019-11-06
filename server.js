@@ -32,7 +32,7 @@ app.use('/users', users);
 app.use('/cars', cars);
 app.use('/purifiers', purifiers);
 app.use('/friend', friend);
-app.use('/todo', todo);
+app.use('/todo', todo); // http://localhost:5000/todo/** */
 
 //Index route
 app.get('/', (req, res) => {
